@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0sbtsae7d52e"]
+
+[ext_resource type="Texture2D" uid="uid://c1mpsfdqql3u" path="res://texturs/enemyplaceholder.png" id="1_0e48y"]
+[ext_resource type="PackedScene" uid="uid://cd1p8wga5wb52" path="res://character_body_2d.tscn" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_wtcfe")]
+position = Vector2(198, 20)
+
+[node name="Enemyplaceholder" type="Sprite2D" parent="."]
+position = Vector2(846, 262)
+texture = ExtResource("1_0e48y")
