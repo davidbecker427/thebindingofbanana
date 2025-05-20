@@ -13,7 +13,6 @@ config_version=5
 config/name="thebindingofbanana"
 run/main_scene="uid://c0sbtsae7d52e"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [input]
 
