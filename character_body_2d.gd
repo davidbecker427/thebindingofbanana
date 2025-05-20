@@ -1,15 +1,11 @@
 extends CharacterBody2D
 
-var base_velocity
-@export var speed :int
-var direction
+@export var speed = 400
 
-func _ready() -> void:
-	print("print");
+func get_input():
+	var input_direction = Input.get_vector("right", "left", "up", "down")
+	velocity = input_direction * speed
 
-
-func _physics_process(delta: float) -> void:
-	direction = Input.get_vector("left","right","up","down")
-	base_velocity = direction * speed
-	position += Vector2(base_velocity)
+func _physics_process(delta):
+	get_input()
 	move_and_slide()
