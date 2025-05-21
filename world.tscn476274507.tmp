@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0sbtsae7d52e"]
+
+[ext_resource type="PackedScene" uid="uid://d4gtw4yoiep4e" path="res://room.tscn" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://cd1p8wga5wb52" path="res://player.tscn" id="2_aqk2v"]
+[ext_resource type="Texture2D" uid="uid://c1mpsfdqql3u" path="res://texturs/enemyplaceholder.png" id="3_036b0"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_aqk2v")]
+position = Vector2(160, 96)
+motion_mode = 1
+
+[node name="Room" parent="." instance=ExtResource("1_tlwt5")]
+script = null
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(285, -70)
+texture = ExtResource("3_036b0")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.39, 0.35)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

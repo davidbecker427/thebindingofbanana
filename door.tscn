@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cogcg462s7umt"]
+
+[node name="Door" type="Area2D"]
+position = Vector2(469, 99)
+
+[node name="Marker2D" type="Marker2D" parent="."]
