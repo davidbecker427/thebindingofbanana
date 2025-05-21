@@ -1,24 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0sbtsae7d52e"]
+[gd_scene load_steps=5 format=3 uid="uid://c0sbtsae7d52e"]
 
 [ext_resource type="PackedScene" uid="uid://d4gtw4yoiep4e" path="res://room.tscn" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cd1p8wga5wb52" path="res://player.tscn" id="2_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://c1mpsfdqql3u" path="res://texturs/enemyplaceholder.png" id="3_036b0"]
+[ext_resource type="Script" uid="uid://dlmmvgtt6vbf" path="res://camera_2d.gd" id="4_aqk2v"]
 
 [node name="World" type="Node2D"]
 
-[node name="Room" parent="." instance=ExtResource("1_tlwt5")]
-position = Vector2(1488, 926)
-
-[node name="Player" parent="Room" instance=ExtResource("2_aqk2v")]
-position = Vector2(-1337, -830)
+[node name="Player" parent="." instance=ExtResource("2_aqk2v")]
+position = Vector2(151, 96)
 motion_mode = 1
 
 [node name="Enemy" type="Sprite2D" parent="."]
-position = Vector2(285, -70)
+position = Vector2(1572, 1107)
 texture = ExtResource("3_036b0")
 
-[node name="Camera2D2" type="Camera2D" parent="."]
-anchor_mode = 0
-zoom = Vector2(0.39, 0.35)
+[node name="Room" parent="." instance=ExtResource("1_tlwt5")]
+z_index = -1
+position = Vector2(1488, 926)
+
+[node name="Camera2D" type="Camera2D" parent="Room"]
+position = Vector2(-1488, -926)
+scale = Vector2(1, 1)
+zoom = Vector2(0.387, 0.346)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+
+[node name="Room2" parent="." instance=ExtResource("1_tlwt5")]
+z_index = -1
+position = Vector2(1488, -952)
+
+[node name="Camera2D" type="Camera2D" parent="Room2"]
+position = Vector2(-1488, -926)
+scale = Vector2(1, 1)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+
+[node name="Room3" parent="." instance=ExtResource("1_tlwt5")]
+z_index = -1
+position = Vector2(4435, 930)
+
+[node name="Camera2D" type="Camera2D" parent="Room3"]
+position = Vector2(-1488, -926)
+scale = Vector2(1, 1)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
