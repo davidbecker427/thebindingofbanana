@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4gtw4yoiep4e"]
+[gd_scene load_steps=7 format=3 uid="uid://d4gtw4yoiep4e"]
 
 [ext_resource type="Script" uid="uid://lw4w6siph2du" path="res://room.gd" id="1_4o3f6"]
 [ext_resource type="Texture2D" uid="uid://dur28vakaylkp" path="res://texturs/TBOB background.png" id="1_88gup"]
 [ext_resource type="PackedScene" uid="uid://cogcg462s7umt" path="res://door.tscn" id="3_4o3f6"]
+[ext_resource type="Script" uid="uid://dncndjn4f4g4b" path="res://door.gd" id="4_v5vuv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88gup"]
 size = Vector2(2294, 1249)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5vuv"]
+size = Vector2(172.5, 127.5)
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_4o3f6")
@@ -46,11 +48,18 @@ shape = SubResource("RectangleShape2D_88gup")
 
 [node name="DoorLeft" parent="." instance=ExtResource("3_4o3f6")]
 position = Vector2(467, 92.5)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("4_v5vuv")
+
+[node name="Marker2D" parent="DoorLeft" index="0"]
+position = Vector2(1150, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLeft"]
 shape = SubResource("RectangleShape2D_v5vuv")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_entered" from="DoorLeft" to="." method="_on_door_left_body_entered"]
+[connection signal="body_entered" from="DoorLeft" to="DoorLeft" method="_on_body_entered"]
 
 [editable path="DoorLeft"]

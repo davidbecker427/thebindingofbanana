@@ -21,7 +21,6 @@ position = Vector2(1488, 926)
 
 [node name="Camera2D" type="Camera2D" parent="Room"]
 position = Vector2(-1488, -926)
-scale = Vector2(1, 1)
 zoom = Vector2(0.387, 0.346)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -33,7 +32,6 @@ position = Vector2(1488, -952)
 
 [node name="Camera2D" type="Camera2D" parent="Room2"]
 position = Vector2(-1488, -926)
-scale = Vector2(1, 1)
 zoom = Vector2(0.387, 0.346)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -45,7 +43,6 @@ position = Vector2(4435, 930)
 
 [node name="Camera2D" type="Camera2D" parent="Room3"]
 position = Vector2(-1488, -926)
-scale = Vector2(1, 1)
 zoom = Vector2(0.387, 0.346)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
