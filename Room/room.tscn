@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4gtw4yoiep4e"]
+
+[ext_resource type="Script" uid="uid://lw4w6siph2du" path="res://Room/room.gd" id="1_4o3f6"]
+[ext_resource type="Texture2D" uid="uid://dur28vakaylkp" path="res://texturs/TBOB background.png" id="1_88gup"]
+[ext_resource type="PackedScene" uid="uid://cogcg462s7umt" path="res://Door/door.tscn" id="3_4o3f6"]
+[ext_resource type="Script" uid="uid://dncndjn4f4g4b" path="res://Door/door.gd" id="4_v5vuv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88gup"]
+size = Vector2(2294, 1249)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5vuv"]
+size = Vector2(172.5, 127.5)
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_4o3f6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.49999, -2.00007)
+scale = Vector2(1.02301, 1.0227)
+texture = ExtResource("1_88gup")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1486, 182)
+texture = ExtResource("1_88gup")
+centered = false
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(-1486, 182)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(326, -121, 317, 444, 1392, 431, 1328, 743, 32, 748, 23, -24)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(38, -380, 321, -266, 323, -811, 1415, -819, 1317, -1031, 1315, -1106, 31, -1103)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(2653, -260, 2935, -380, 2942, -1103, 1651, -1103, 1653, -1021, 1559, -820, 2644, -819)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(2646, -108, 2888, -8, 2944, -10, 2944, 741, 1658, 741, 1656, 649, 1551, 438, 2653, 442)
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(-2, -6.5)
+shape = SubResource("RectangleShape2D_88gup")
+
+[node name="DoorLeft" parent="." instance=ExtResource("3_4o3f6")]
+position = Vector2(1287, -85)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("4_v5vuv")
+
+[node name="Marker2D" parent="DoorLeft" index="0"]
+position = Vector2(5, 85)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLeft"]
+position = Vector2(-3, 84)
+shape = SubResource("RectangleShape2D_v5vuv")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_entered" from="DoorLeft" to="." method="_on_door_left_body_entered"]
+[connection signal="body_entered" from="DoorLeft" to="DoorLeft" method="_on_body_entered"]
+
+[editable path="DoorLeft"]
