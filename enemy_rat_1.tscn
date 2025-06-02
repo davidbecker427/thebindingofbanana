@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cphlf8p6uwwoj"]
+
+[ext_resource type="Texture2D" uid="uid://cw3pw6bd5w788" path="res://texturs/EnemyRat1.png" id="1_ojo7h"]
+[ext_resource type="Script" uid="uid://j5a1cfueiiat" path="res://enemy_rat_1.gd" id="1_s6312"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s6312"]
+radius = 18.0
+height = 58.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6312"]
+radius = 253.049
+
+[node name="EnemyRat1" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_s6312")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ojo7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_s6312")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_s6312")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
