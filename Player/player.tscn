@@ -22,7 +22,6 @@ player_sprite_up = ExtResource("2_btcbx")
 player_sprite_down = ExtResource("2_btcbx")
 player_sprite_left = ExtResource("3_k53q1")
 player_sprite_right = ExtResource("4_fhl08")
-speed = null
 
 [node name="Placeholderplayer" type="Sprite2D" parent="."]
 position = Vector2(438, 319)

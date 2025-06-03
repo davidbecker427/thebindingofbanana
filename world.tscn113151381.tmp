@@ -89,6 +89,7 @@ script = ExtResource("4_aqk2v")
 position = Vector2(135, 100)
 motion_mode = 1
 player_sprite_down = ExtResource("3_dwbse")
+speed = 1000
 
 [node name="Room" parent="." instance=ExtResource("1_tlwt5")]
 z_index = -1
