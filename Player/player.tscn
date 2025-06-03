@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd1p8wga5wb52"]
+[gd_scene load_steps=8 format=3 uid="uid://cd1p8wga5wb52"]
 
 [ext_resource type="Texture2D" uid="uid://0sycn3xdybo8" path="res://texturs/placeholderplayer.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://t82u8lh3jhr7" path="res://Player/player.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://bgh75k745i1lq" path="res://texturs/placeholderplayer_achterkant.png" id="2_btcbx"]
 [ext_resource type="Texture2D" uid="uid://bt4opa7jnsw1w" path="res://texturs/placeholderplayer_left.png" id="3_k53q1"]
 [ext_resource type="Texture2D" uid="uid://drf77nrcnuql7" path="res://texturs/placeholderplayer_right.png" id="4_fhl08"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k53q1"]
+radius = 37.0
+height = 136.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fhl08"]
+radius = 29.0
+height = 106.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
@@ -14,14 +22,16 @@ player_sprite_up = ExtResource("2_btcbx")
 player_sprite_down = ExtResource("2_btcbx")
 player_sprite_left = ExtResource("3_k53q1")
 player_sprite_right = ExtResource("4_fhl08")
+speed = null
 
 [node name="Placeholderplayer" type="Sprite2D" parent="."]
 position = Vector2(438, 319)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_f50pn")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(408, 341, 397, 313, 423, 275, 440, 264, 455, 257, 454, 280, 434, 305, 430, 324, 438, 338, 454, 348, 464, 354, 456, 363, 433, 364, 419, 360)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(428, 318)
+shape = SubResource("CapsuleShape2D_k53q1")
 
 [node name="Node2D_right" type="Node2D" parent="."]
 position = Vector2(500, 315)
@@ -34,3 +44,11 @@ position = Vector2(432, 209)
 
 [node name="Node2D_down" type="Node2D" parent="."]
 position = Vector2(431, 403)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(430, 317)
+shape = SubResource("CapsuleShape2D_fhl08")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
