@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var bullet_path=preload("res://Bullet/Bullet.tscn")
-class_name Player
+#class_name Player
 
 signal died
 
@@ -56,7 +56,6 @@ func fire(player_sprite, direction, node):
 	# add the bullet to the scene tree so it can be updated
 	get_parent().add_child(bullet)
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		died.emit()
-		queue_free()
+#func _on_hitbox_body_entered(body: Node2D) -> void:
+#	if body is Enemy:
+		#queue_free()
