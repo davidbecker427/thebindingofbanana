@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://c0sbtsae7d52e"]
+[gd_scene load_steps=14 format=4 uid="uid://c0sbtsae7d52e"]
 
+[ext_resource type="Script" uid="uid://de8iypvvh0uft" path="res://world.gd" id="1_ioo17"]
 [ext_resource type="PackedScene" uid="uid://d4gtw4yoiep4e" path="res://Room/room.tscn" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cd1p8wga5wb52" path="res://Player/player.tscn" id="2_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://0sycn3xdybo8" path="res://texturs/placeholderplayer.png" id="3_dwbse"]
@@ -233,6 +234,7 @@ sources/1 = SubResource("TileSetAtlasSource_gbfbk")
 sources/2 = SubResource("TileSetAtlasSource_ioo17")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_ioo17")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.387, 0.346)
@@ -242,13 +244,13 @@ script = ExtResource("4_aqk2v")
 
 [node name="Player" parent="." instance=ExtResource("2_aqk2v")]
 top_level = true
-position = Vector2(135, 100)
+position = Vector2(586, 711)
 motion_mode = 1
 player_sprite_down = ExtResource("3_dwbse")
 
 [node name="Room" parent="." instance=ExtResource("1_tlwt5")]
 z_index = -1
-position = Vector2(1488, 926)
+position = Vector2(1455, 931)
 
 [node name="Room2" parent="." instance=ExtResource("1_tlwt5")]
 z_index = -1
