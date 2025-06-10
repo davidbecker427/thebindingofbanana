@@ -1,8 +1,9 @@
 extends CharacterBody2D
-var bullet_path=preload("res://Bullet/Bullet.tscn")
-# class_name Player
+class_name Player
 
-# signal died
+var bullet_path=preload("res://Bullet/Bullet.tscn")
+
+signal died
 
 # Adding a texture for these variable textures (See Player node)
 @export var player_sprite_up: Texture2D
@@ -57,7 +58,6 @@ func fire(player_sprite, direction, node):
 	get_parent().add_child(bullet)
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	pass
-#	if body is Enemy:
-	#	died.emit()
-	#	queue_free()
+	if body is Enemy_Rat:
+		died.emit()
+		queue_free()
