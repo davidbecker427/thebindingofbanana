@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c0sbtsae7d52e"]
+[gd_scene load_steps=15 format=4 uid="uid://c0sbtsae7d52e"]
 
 [ext_resource type="Script" uid="uid://de8iypvvh0uft" path="res://world.gd" id="1_ioo17"]
 [ext_resource type="PackedScene" uid="uid://d4gtw4yoiep4e" path="res://Room/room.tscn" id="1_tlwt5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://n012g6tnkkk4" path="res://texturs/color_pallet.png" id="6_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://bxvdsk0hoqu1s" path="res://texturs/suiker_new.png" id="7_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://dgp42xc0q6hmx" path="res://Enemies/enemy_rat_1.tscn" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://ccijl10xxmg12" path="res://Enemies/enemy_worm_apple.tscn" id="10_wse8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
 texture = ExtResource("6_dwbse")
@@ -267,3 +268,6 @@ tile_set = SubResource("TileSet_gbfbk")
 
 [node name="EnemyRat1" parent="." instance=ExtResource("7_pkg7o")]
 position = Vector2(1968, 887)
+
+[node name="EnemyWormApple" parent="." instance=ExtResource("10_wse8f")]
+position = Vector2(1358, 1193)

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccijl10xxmg12"]
+
+[ext_resource type="Script" uid="uid://iromkeqhtta5" path="res://Enemies/enemy_worm_apple.gd" id="1_2vjol"]
+[ext_resource type="Texture2D" uid="uid://dlk5v6xjx0gd1" path="res://texturs/WormAppleEnemy.png" id="1_ovllb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2vjol"]
+radius = 28.0
+height = 66.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0hi5"]
+radius = 647.0
+height = 1294.0
+
+[node name="EnemyWormApple" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_2vjol")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ovllb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2vjol")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CapsuleShape2D_p0hi5")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

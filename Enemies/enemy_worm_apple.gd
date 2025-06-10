@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Enemy_Rat
+class_name Enemy_WormApple
 
 var player: Player = null
 
@@ -26,15 +26,15 @@ func _physics_process(delta: float) -> void:
 	
 		move_and_slide()
 
-func _on_player_detector_body_entered(body: Node2D) -> void:
-	if body is Player:
-		if player == null:
-			player = body
-			print(name + "found player")
-
-
 func _on_player_detector_body_exited(body: Node2D) -> void:
 	if body is Player:
 		if player != null:
 			player = null
 			print(name + "lost player")
+
+
+func _on_player_detector_body_entered(body: Node2D) -> void:
+	if body is Player:
+		if player == null:
+			player = body
+			print(name + "found player")

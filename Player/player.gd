@@ -58,6 +58,6 @@ func fire(player_sprite, direction, node):
 	get_parent().add_child(bullet)
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is Enemy_Rat:
+	if body is Enemy_Rat or Enemy_WormApple:
 		died.emit()
 		queue_free()
