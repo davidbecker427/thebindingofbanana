@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dlk5v6xjx0gd1" path="res://texturs/WormAppleEnemy.png" id="1_ovllb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2vjol"]
-radius = 28.0
-height = 66.0
+radius = 52.0
+height = 128.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0hi5"]
 radius = 647.0
