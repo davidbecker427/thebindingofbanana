@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c0sbtsae7d52e"]
+[gd_scene load_steps=16 format=4 uid="uid://c0sbtsae7d52e"]
 
 [ext_resource type="Script" uid="uid://de8iypvvh0uft" path="res://world.gd" id="1_ioo17"]
 [ext_resource type="PackedScene" uid="uid://d4gtw4yoiep4e" path="res://Room/room.tscn" id="1_tlwt5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bxvdsk0hoqu1s" path="res://texturs/suiker_new.png" id="7_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://dgp42xc0q6hmx" path="res://Enemies/enemy_rat_1.tscn" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://ccijl10xxmg12" path="res://Enemies/enemy_worm_apple.tscn" id="10_wse8f"]
+[ext_resource type="PackedScene" uid="uid://ct7n7f7jtkd2r" path="res://Enemies/enemy_rat_king.tscn" id="11_ic0uy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
 texture = ExtResource("6_dwbse")
@@ -267,7 +268,7 @@ tile_map_data = PackedByteArray("AAAkABkAAgAAAAAAAAAkABoAAgAAAAEAAAAkABsAAgAAAAI
 tile_set = SubResource("TileSet_gbfbk")
 
 [node name="EnemyRat1" parent="." instance=ExtResource("7_pkg7o")]
-position = Vector2(2129, 901)
+position = Vector2(2207, 586)
 
 [node name="EnemyWormApple4" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(1768, 2785)
@@ -279,7 +280,7 @@ position = Vector2(-1486, 2368)
 position = Vector2(2165, 3073)
 
 [node name="EnemyWormApple" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(1397, 896)
+position = Vector2(1617, 1354)
 
 [node name="EnemyWormApple2" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(2259, -1119)
@@ -377,3 +378,6 @@ polygon = PackedVector2Array(896.769, -942.21, 897.769, -1069.21, 784.769, -1070
 
 [node name="rock 6" type="CollisionPolygon2D" parent="StaticBody2D room 5"]
 polygon = PackedVector2Array(1344.77, -1086.21, 1472.77, -1086.21, 1473.77, -1166.21, 1600.77, -1166.21, 1600.77, -1231.21, 1727.77, -1230.21, 1728.77, -1103.21, 1599.77, -1102.21, 1601.77, -1039.21, 1473.77, -1038.21, 1472.77, -958.21, 1344.77, -958.21)
+
+[node name="EnemyRatKing" parent="." instance=ExtResource("11_ic0uy")]
+position = Vector2(1523, -3038)

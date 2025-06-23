@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct7n7f7jtkd2r"]
+
+[ext_resource type="Texture2D" uid="uid://bmndhbpm6qr0o" path="res://texturs/EnemyRatKing.png" id="1_3fk2t"]
+[ext_resource type="Script" uid="uid://dlm05wp27nm3e" path="res://Enemies/enemy_rat_king.gd" id="1_hmju4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hmju4"]
+radius = 132.0
+height = 264.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnpte"]
+radius = 892.0
+height = 1784.0
+
+[node name="EnemyRatKing" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_hmju4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.76953, 1.94531)
+texture = ExtResource("1_3fk2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17, 7)
+shape = SubResource("CapsuleShape2D_hmju4")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(3, 0)
+shape = SubResource("CapsuleShape2D_cnpte")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

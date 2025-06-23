@@ -10,6 +10,7 @@ var stop_distance := 20.0
 #func _process(delta: float) -> void:
 	#pass
 
+#enemy movement
 func _physics_process(delta: float) -> void:
 	if player != null:
 		var enemy_to_player = (player.global_position - global_position)
@@ -26,13 +27,14 @@ func _physics_process(delta: float) -> void:
 	
 		move_and_slide()
 
+#detects if player is in range
 func _on_player_detector_body_exited(body: Node2D) -> void:
 	if body is Player:
 		if player != null:
 			player = null
 			print(name + "lost player")
 
-
+#detects if player is out of range
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if player == null:
