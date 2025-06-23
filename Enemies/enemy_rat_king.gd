@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Enemy_Rat
+class_name Enemy_Rat_King
 
 var player: Player = null
 
