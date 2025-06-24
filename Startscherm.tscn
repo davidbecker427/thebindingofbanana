@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c56cgmd7s1ex8"]
+[gd_scene load_steps=5 format=3 uid="uid://c56cgmd7s1ex8"]
 
-[ext_resource type="Texture2D" uid="uid://bskmktcj6couq" path="res://texturs/tboi-menu-bg.jpg" id="1_pi08o"]
+[ext_resource type="Script" uid="uid://brkw4ne5x8je8" path="res://startscherm.gd" id="1_yqu7l"]
+[ext_resource type="Texture2D" uid="uid://cyb7h82xrhg5p" path="res://texturs/tbob menu bg.png" id="2_rm7ur"]
 [ext_resource type="Texture2D" uid="uid://cyyb81sod11qn" path="res://texturs/TBOB-menu-bg-paper.png" id="2_yqu7l"]
+[ext_resource type="FontFile" uid="uid://b03wwrbsyswt7" path="res://texturs/upheavtt.ttf" id="4_rm7ur"]
 
 [node name="InGameUI" type="Control"]
 layout_mode = 3
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yqu7l")
 
 [node name="StartScreen" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -21,17 +24,12 @@ grow_vertical = 2
 
 [node name="BG" type="NinePatchRect" parent="StartScreen"]
 layout_mode = 2
-texture = ExtResource("1_pi08o")
+texture = ExtResource("2_rm7ur")
 
 [node name="MarginContainer" type="VBoxContainer" parent="StartScreen"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="StartScreen/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "The Binding of Banana"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="StartScreen/MarginContainer"]
 custom_minimum_size = Vector2(500, 500)
@@ -40,18 +38,43 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_yqu7l")
 
-[node name="Button" type="Button" parent="StartScreen/MarginContainer/NinePatchRect"]
+[node name="Label" type="Label" parent="StartScreen/MarginContainer/NinePatchRect"]
+layout_mode = 2
+offset_left = 42.0
+offset_top = 63.0
+offset_right = 629.0
+offset_bottom = 109.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.979404, 0.888754, 0.158434, 1)
+theme_override_colors/font_shadow_color = Color(0.112236, 0.103398, 0.079698, 1)
+theme_override_fonts/font = ExtResource("4_rm7ur")
+theme_override_font_sizes/font_size = 35
+text = "The Binding of Banana"
+
+[node name="StartButton" type="Button" parent="StartScreen/MarginContainer/NinePatchRect"]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
-offset_left = 174.0
-offset_top = 191.0
-offset_right = 335.0
-offset_bottom = 248.0
+offset_left = 158.0
+offset_top = 220.0
+offset_right = 334.0
+offset_bottom = 279.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "New game"
+theme_override_fonts/font = ExtResource("4_rm7ur")
+theme_override_font_sizes/font_size = 30
+text = "START"
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Label2" type="Label" parent="StartScreen/MarginContainer/NinePatchRect"]
+layout_mode = 2
+offset_left = 302.0
+offset_top = 547.0
+offset_right = 802.0
+offset_bottom = 565.0
+theme_override_colors/font_color = Color(0.992722, 0.953849, 0.169097, 1)
+theme_override_colors/font_shadow_color = Color(0.516313, 0.493435, 0.0052786, 1)
+theme_override_fonts/font = ExtResource("4_rm7ur")
+theme_override_font_sizes/font_size = 20
+text = "Credits: Aidan, David, Luca"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="StartScreen/MarginContainer/NinePatchRect/StartButton" to="." method="_on_start_button_pressed"]

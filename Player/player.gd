@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var bullet_path=preload("res://Bullet/Bullet.tscn")
-var health = 2
+var health = 10
 signal died
 
 # Adding a texture for these variable textures (See Player node)
@@ -13,7 +13,9 @@ signal died
 @onready var sprite = $Placeholderplayer 
 
 # set a speed variable
-@export var speed = 1000
+var speed = 1000
+
+
 
 func get_input():
 	# get the input fields from the input map
@@ -58,16 +60,12 @@ func fire(player_sprite, direction, node):
 	get_parent().add_child(bullet)
 	
 	
-
-
-
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	
 	if body is Enemy_Rat or body is Enemy_WormApple:
 		health -= 2 # Subtract 2
 		print("Player hit! Health is now:", health)
 
-		# Check for death
+		# Optional: Check for death
 		if health <= 0:
 			died.emit()
 			queue_free()

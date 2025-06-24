@@ -1,16 +1,20 @@
-[gd_scene load_steps=16 format=4 uid="uid://c0sbtsae7d52e"]
+[gd_scene load_steps=19 format=4 uid="uid://b8o60npihvr0s"]
 
 [ext_resource type="Script" uid="uid://de8iypvvh0uft" path="res://world.gd" id="1_ioo17"]
 [ext_resource type="PackedScene" uid="uid://d4gtw4yoiep4e" path="res://Room/room.tscn" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cd1p8wga5wb52" path="res://Player/player.tscn" id="2_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://0sycn3xdybo8" path="res://texturs/placeholderplayer.png" id="3_dwbse"]
 [ext_resource type="Script" uid="uid://dlmmvgtt6vbf" path="res://Camera/camera_2d.gd" id="4_aqk2v"]
+[ext_resource type="Texture2D" uid="uid://cyyb81sod11qn" path="res://texturs/TBOB-menu-bg-paper.png" id="5_2o6r5"]
+[ext_resource type="FontFile" uid="uid://b03wwrbsyswt7" path="res://texturs/upheavtt.ttf" id="6_70uel"]
 [ext_resource type="Texture2D" uid="uid://doi4vy64ebk3w" path="res://texturs/spritemap1.png" id="6_dwbse"]
 [ext_resource type="Texture2D" uid="uid://n012g6tnkkk4" path="res://texturs/color_pallet.png" id="6_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://bxvdsk0hoqu1s" path="res://texturs/suiker_new.png" id="7_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://dgp42xc0q6hmx" path="res://Enemies/enemy_rat_1.tscn" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://ccijl10xxmg12" path="res://Enemies/enemy_worm_apple.tscn" id="10_wse8f"]
-[ext_resource type="PackedScene" uid="uid://ct7n7f7jtkd2r" path="res://Enemies/enemy_rat_king.tscn" id="11_ic0uy"]
+[ext_resource type="PackedScene" path="res://Enemies/enemy_rat_king.tscn" id="11_ic0uy"]
+
+[sub_resource type="Theme" id="Theme_hiqwa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
 texture = ExtResource("6_dwbse")
@@ -238,6 +242,75 @@ sources/2 = SubResource("TileSetAtlasSource_ioo17")
 [node name="World" type="Node2D"]
 script = ExtResource("1_ioo17")
 
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="GameOverScreen" type="MarginContainer" parent="GameOverUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="VBoxContainer" parent="GameOverUI/GameOverScreen"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GameOverUI/GameOverScreen/MarginContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_2o6r5")
+
+[node name="Label" type="Label" parent="GameOverUI/GameOverScreen/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -99.0
+offset_right = 136.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_70uel")
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverUI/GameOverScreen/MarginContainer/NinePatchRect"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+offset_left = 81.0
+offset_top = 246.0
+offset_right = 231.0
+offset_bottom = 290.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_hiqwa")
+theme_override_fonts/font = ExtResource("6_70uel")
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="MenuButton" type="Button" parent="GameOverUI/GameOverScreen/MarginContainer/NinePatchRect"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+offset_left = 242.0
+offset_top = 246.0
+offset_right = 429.0
+offset_bottom = 290.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("6_70uel")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1470, 931)
 zoom = Vector2(0.387, 0.346)
@@ -277,7 +350,7 @@ position = Vector2(-2050, 5299)
 position = Vector2(3585, 866)
 
 [node name="EnemyWormApple4" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(1768, 2785)
+position = Vector2(2195, 704)
 
 [node name="EnemyWormApple5" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(-1484, 2472)
@@ -468,3 +541,6 @@ polygon = PackedVector2Array(-1291.23, -802.21, -1161.23, -802.21, -1161.23, -66
 
 [node name="EnemyRatKing" parent="." instance=ExtResource("11_ic0uy")]
 position = Vector2(1523, -3038)
+
+[connection signal="pressed" from="GameOverUI/GameOverScreen/MarginContainer/NinePatchRect/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverUI/GameOverScreen/MarginContainer/NinePatchRect/MenuButton" to="." method="_on_menu_button_pressed"]
