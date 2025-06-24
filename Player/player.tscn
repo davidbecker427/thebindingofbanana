@@ -16,7 +16,7 @@ height = 106.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 17
+collision_mask = 45
 script = ExtResource("1_ij6vw")
 player_sprite_up = ExtResource("2_btcbx")
 player_sprite_down = ExtResource("2_btcbx")

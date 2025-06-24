@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://c56cgmd7s1ex8"]
+
+[ext_resource type="Texture2D" uid="uid://bskmktcj6couq" path="res://texturs/tboi-menu-bg.jpg" id="1_pi08o"]
+[ext_resource type="Texture2D" uid="uid://cyyb81sod11qn" path="res://texturs/TBOB-menu-bg-paper.png" id="2_yqu7l"]
+
+[node name="InGameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartScreen" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="NinePatchRect" parent="StartScreen"]
+layout_mode = 2
+texture = ExtResource("1_pi08o")
+
+[node name="MarginContainer" type="VBoxContainer" parent="StartScreen"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="StartScreen/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "The Binding of Banana"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StartScreen/MarginContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_yqu7l")
+
+[node name="Button" type="Button" parent="StartScreen/MarginContainer/NinePatchRect"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+offset_left = 174.0
+offset_top = 191.0
+offset_right = 335.0
+offset_bottom = 248.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "New game"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4gtw4yoiep4e"]
+[gd_scene load_steps=8 format=3 uid="uid://d4gtw4yoiep4e"]
 
 [ext_resource type="Script" uid="uid://lw4w6siph2du" path="res://Room/room.gd" id="1_4o3f6"]
 [ext_resource type="Texture2D" uid="uid://dur28vakaylkp" path="res://texturs/TBOB background.png" id="1_88gup"]
 [ext_resource type="PackedScene" uid="uid://cogcg462s7umt" path="res://Door/door.tscn" id="3_4o3f6"]
 [ext_resource type="Script" uid="uid://dncndjn4f4g4b" path="res://Door/door.gd" id="4_v5vuv"]
+[ext_resource type="PackedScene" uid="uid://dwamf7ap2tji4" path="res://Items/Brother-Bobby.tscn" id="5_ly80p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88gup"]
 size = Vector2(2294, 1249)
@@ -27,6 +28,7 @@ centered = false
 
 [node name="Walls" type="StaticBody2D" parent="."]
 position = Vector2(-1486, 182)
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(326, -121, 317, 444, 1392, 431, 1328, 743, 32, 748, 23, -24)
@@ -59,6 +61,9 @@ scale = Vector2(1e-05, 1e-05)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLeft"]
 position = Vector2(-3, 84)
 shape = SubResource("RectangleShape2D_v5vuv")
+
+[node name="Brother Bobby" parent="." instance=ExtResource("5_ly80p")]
+position = Vector2(-912, 213)
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_entered" from="DoorLeft" to="." method="_on_door_left_body_entered"]
