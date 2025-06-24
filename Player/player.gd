@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var bullet_path=preload("res://Bullet/Bullet.tscn")
-
+var health = 2
 signal died
 
 # Adding a texture for these variable textures (See Player node)
@@ -56,8 +56,18 @@ func fire(player_sprite, direction, node):
 	
 	# add the bullet to the scene tree so it can be updated
 	get_parent().add_child(bullet)
+	
+	
+
+
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is Enemy_Rat or Enemy_WormApple:
-		died.emit()
-		queue_free()
+	
+	if body is Enemy_Rat or body is Enemy_WormApple:
+		health -= 2 # Subtract 2
+		print("Player hit! Health is now:", health)
+
+		# Check for death
+		if health <= 0:
+			died.emit()
+			queue_free()

@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 Events="*res://events.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [file_customization]
 
 folder_colors={
@@ -74,3 +79,8 @@ shoot_down={
 2d_physics/layer_3="player_hitbox"
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="enemy"
+2d_physics/layer_6="item"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

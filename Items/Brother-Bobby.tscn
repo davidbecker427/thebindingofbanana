@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwamf7ap2tji4"]
+
+[ext_resource type="Texture2D" uid="uid://coy1hj3wibdk7" path="res://texturs/Brother Bobby sprite.webp" id="1_5d2gu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gio07"]
+size = Vector2(20, 22)
+
+[node name="Brother_Bobby" type="Area2D"]
+scale = Vector2(3, 3)
+collision_layer = 32
+collision_mask = 14
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5d2gu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gio07")
