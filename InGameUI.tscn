@@ -33,16 +33,16 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 
 [node name="Heart1" type="NinePatchRect" parent="InGameUI/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(55, 50)
 layout_mode = 2
 texture = ExtResource("2_2p58f")
 
 [node name="Heart2" type="NinePatchRect" parent="InGameUI/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(55, 50)
 layout_mode = 2
 texture = ExtResource("2_2p58f")
 
 [node name="Heart3" type="NinePatchRect" parent="InGameUI/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(55, 50)
 layout_mode = 2
 texture = ExtResource("2_2p58f")
