@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="thebindingofbanana"
-run/main_scene="uid://c0sbtsae7d52e"
+run/main_scene="uid://c56cgmd7s1ex8"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
