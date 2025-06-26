@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dgp42xc0q6hmx" path="res://Enemies/enemy_rat_1.tscn" id="7_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://be2tp8itkobql" path="res://texturs/bossroom sprite.png" id="9_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://ccijl10xxmg12" path="res://Enemies/enemy_worm_apple.tscn" id="10_wse8f"]
-[ext_resource type="PackedScene" path="res://Enemies/enemy_rat_king.tscn" id="11_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://ct7n7f7jtkd2r" path="res://Enemies/enemy_rat_king.tscn" id="11_ic0uy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
 texture = ExtResource("6_dwbse")

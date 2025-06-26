@@ -29,6 +29,10 @@ folder_colors={
 "res://texturs/": "orange"
 }
 
+[global_group]
+
+player=""
+
 [input]
 
 up={
