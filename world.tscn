@@ -265,11 +265,18 @@ size = Vector2(129, 170)
 script = ExtResource("1_ioo17")
 
 [node name="GameOverUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MarginContainer" type="VBoxContainer" parent="GameOverUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -761,3 +768,4 @@ shape = SubResource("RectangleShape2D_2o6r5")
 position = Vector2(-8487, 3148)
 
 [connection signal="pressed" from="GameOverUI/MarginContainer/NinePatchRect/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverUI/MarginContainer/NinePatchRect/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
