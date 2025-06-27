@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy_Rat_King
 
 var player: Player = null
+var bullet_path = preload("res://Bullets/cheesebullet.tscn")
 
 var speed: float = 600.0
 var direction := Vector2.ZERO
@@ -26,6 +27,15 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, speed)
 	
 		move_and_slide()
+
+func fire(player_sprite, direction, node):
+	
+	var bullet = bullet_path.instantiate()
+	bullet.dir = direction
+	bullet.pos = node.global_position
+	bullet.rota = global_rotation
+	get_parent().add_child(bullet)
+
 
 #detects if player is in range
 func _on_player_detector_body_entered(body: Node2D) -> void:
