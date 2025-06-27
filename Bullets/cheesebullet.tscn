@@ -1,19 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://datk76enwrjvq"]
+[gd_scene load_steps=4 format=3 uid="uid://copnbxt3jqmli"]
 
-[ext_resource type="Script" uid="uid://cc6m5ugxne5aj" path="res://cheese.gd" id="1_tfucv"]
+[ext_resource type="Script" uid="uid://baxoiqvan471m" path="res://Bullets/cheesebullet.gd" id="1_3y4fe"]
 [ext_resource type="Texture2D" uid="uid://3rmxapt4wirc" path="res://texturs/Cheese1.png" id="2_hveg1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vapvq"]
-size = Vector2(47, 42)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge78o"]
+size = Vector2(44, 40)
 
-[node name="Cheese" type="CharacterBody2D"]
+[node name="Cheesebullet" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 45
-script = ExtResource("1_tfucv")
+collision_mask = 39
+script = ExtResource("1_3y4fe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_hveg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -3)
-shape = SubResource("RectangleShape2D_vapvq")
+position = Vector2(-1, -3)
+shape = SubResource("RectangleShape2D_ge78o")
