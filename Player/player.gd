@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-var bullet_path = preload("res://Bullet/Bullet.tscn")
+var bullet_path = preload("res://Bullets/Bullet.tscn")
 var health = 6
 signal died
 
