@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://b8o60npihvr0s"]
+[gd_scene load_steps=21 format=4 uid="uid://b8o60npihvr0s"]
 
 [ext_resource type="Script" uid="uid://de8iypvvh0uft" path="res://world.gd" id="1_ioo17"]
-[ext_resource type="PackedScene" uid="uid://d4gtw4yoiep4e" path="res://Room/room.tscn" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cd1p8wga5wb52" path="res://Player/player.tscn" id="2_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://0sycn3xdybo8" path="res://texturs/placeholderplayer.png" id="3_dwbse"]
+[ext_resource type="Texture2D" uid="uid://cyyb81sod11qn" path="res://texturs/TBOB-menu-bg-paper.png" id="4_70uel"]
 [ext_resource type="Script" uid="uid://dlmmvgtt6vbf" path="res://Camera/camera_2d.gd" id="4_aqk2v"]
+[ext_resource type="FontFile" uid="uid://b03wwrbsyswt7" path="res://texturs/upheavtt.ttf" id="5_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://doi4vy64ebk3w" path="res://texturs/spritemap1.png" id="6_dwbse"]
 [ext_resource type="Texture2D" uid="uid://n012g6tnkkk4" path="res://texturs/color_pallet.png" id="6_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://bxvdsk0hoqu1s" path="res://texturs/suiker_new.png" id="7_gbfbk"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://be2tp8itkobql" path="res://texturs/bossroom sprite.png" id="9_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://ccijl10xxmg12" path="res://Enemies/enemy_worm_apple.tscn" id="10_wse8f"]
 [ext_resource type="PackedScene" uid="uid://ct7n7f7jtkd2r" path="res://Enemies/enemy_rat_king.tscn" id="11_ic0uy"]
+[ext_resource type="Script" uid="uid://cph31xa57gsrp" path="res://door.gd" id="11_k3n1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
 texture = ExtResource("6_dwbse")
@@ -256,34 +258,74 @@ sources/1 = SubResource("TileSetAtlasSource_gbfbk")
 sources/2 = SubResource("TileSetAtlasSource_ioo17")
 sources/3 = SubResource("TileSetAtlasSource_2o6r5")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o6r5"]
+size = Vector2(129, 170)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_ioo17")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1470, 931)
-zoom = Vector2(0.387, 0.346)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-script = ExtResource("4_aqk2v")
-is_starting_camera = true
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="VBoxContainer" parent="GameOverUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GameOverUI/MarginContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_70uel")
+
+[node name="Label" type="Label" parent="GameOverUI/MarginContainer/NinePatchRect"]
+layout_mode = 2
+offset_left = 109.0
+offset_top = 129.0
+offset_right = 696.0
+offset_bottom = 175.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.936785, 0, 0.147903, 1)
+theme_override_colors/font_shadow_color = Color(0.112236, 0.103398, 0.079698, 1)
+theme_override_fonts/font = ExtResource("5_hiqwa")
+theme_override_font_sizes/font_size = 50
+text = "Game over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverUI/MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 222.0
+offset_right = 412.0
+offset_bottom = 262.0
+
+[node name="RestartButton" type="Button" parent="GameOverUI/MarginContainer/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("5_hiqwa")
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="MenuButton" type="Button" parent="GameOverUI/MarginContainer/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("5_hiqwa")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu
+"
 
 [node name="Player" parent="." instance=ExtResource("2_aqk2v")]
 top_level = true
-position = Vector2(586, 711)
+position = Vector2(1571, 660)
 motion_mode = 1
 player_sprite_down = ExtResource("3_dwbse")
-
-[node name="Room" parent="." instance=ExtResource("1_tlwt5")]
-z_index = -1
-position = Vector2(1455, 931)
-
-[node name="Room2" parent="." instance=ExtResource("1_tlwt5")]
-z_index = -1
-position = Vector2(1472, -955)
-
-[node name="Room3" parent="." instance=ExtResource("1_tlwt5")]
-z_index = -1
-position = Vector2(4435, 930)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(81, -27)
@@ -312,14 +354,6 @@ position = Vector2(4465, 660)
 [node name="EnemyWormApple2" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(2259, -1119)
 
-[node name="StaticBody2D room 3" type="StaticBody2D" parent="."]
-position = Vector2(3280, 1556)
-constant_linear_velocity = Vector2(1, 0)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 3"]
-position = Vector2(74, 47)
-polygon = PackedVector2Array(-10, 49, 1080, 64, 1030, 250, 1297, 254, 1224, 63, 2352, 45, 2355, -549, 2578, -450, 2583, -809, 2373, -744, 2344, -1302, 1239, -1290, 1237, -1305, 1261, -1316, 1258, -1341, 1232, -1290, 1226, -1289, 1216, -1291, 1204, -1290, 1200, -1290, 1212, -1291, 1228, -1287, 1218, -1291, 1198, -1290, 1190, -1290, 1188, -1290, 1184, -1290, 1153, -1290, 1109, -1292, 1074, -1289, -13, -1304, -14, -747, -88, -737, -93, -764, -119, -760, -134, -773, -165, -768, -180, -773, -190, -792, -200, -792, -208, -809, -233, -809, -272, -805, -276, -480, -245, -478, -210, -490, -195, -503, -161, -505, -149, -520, -125, -525, -108, -538, -86, -539, -46, -546, -28, -554, -4, -544, -11, -10, -281, 181, -293, 299, 2617, 298, 2630, -678, 2628, -1568, -309, -1562, -319, 293)
-
 [node name="EnemyRat3" parent="." instance=ExtResource("7_pkg7o")]
 position = Vector2(620, -743)
 
@@ -336,7 +370,60 @@ position = Vector2(-1051, 3261)
 position = Vector2(620, 3005)
 
 [node name="EnemyRat2" parent="." instance=ExtResource("7_pkg7o")]
-position = Vector2(917, -1137)
+position = Vector2(938, -1137)
+
+[node name="StaticBody2D room 1" type="StaticBody2D" parent="."]
+position = Vector2(-2606.77, 3460.21)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 1"]
+position = Vector2(2902.77, -1913.21)
+polygon = PackedVector2Array(1072, 6, 1075, 58, 1057, 58, 1055, 75, 1042, 73, 1042, 142, 1024, 142, 1027, 195, 1009, 193, 1161, 193, 1164, 342, 992, 348, 992, 308, -315, 310, -315, -1544, 1150, -1550, 1153, -1491, 993, -1485, 989, -1443, 1009, -1444, 1005, -1405, 1029, -1412, 1021, -1381, 1041, -1376, 1040, -1347, 1053, -1347, 1053, -1323, 1074, -1317, 1073, -1255, 1, -1248, -11, 8)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D room 1"]
+position = Vector2(5213.77, -1913.21)
+polygon = PackedVector2Array(-1160, -1486, -1162, -1553, 309, -1539, 311, 311, -929, 310, -927, 342, -1150, 345, -1151, 190, -1056, 189, -995, 193, -1008, 197, -1010, 156, -1028, 160, -1027, 125, -1040, 127, -1043, 90, -1056, 91, -1058, 73, -1072, 76, -1076, 19, -1056, 23, -1059, 3, 0, 4, 2, -538, 36, -539, 64, -540, 66, -523, 114, -522, 113, -508, 129, -500, 131, -491, 180, -487, 182, -472, 214, -471, 216, -457, 263, -457, 261, -794, 216, -793, 215, -778, 166, -776, 165, -741, 74, -742, 69, -691, 4, -690, 1, -1252, -1058, -1252, -1060, -1321, -1043, -1322, -1044, -1353, -1026, -1351, -1028, -1390, -1007, -1389, -1012, -1422, -992, -1422, -990, -1489)
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 1"]
+position = Vector2(4076.77, -2529.21)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+is_starting_camera = true
+
+[node name="DoorDown" type="Area2D" parent="StaticBody2D room 1"]
+position = Vector2(4052.77, -1805.21)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 4/DoorUp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorDown"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="DoorUp" type="Area2D" parent="StaticBody2D room 1"]
+position = Vector2(4076.77, -3248.21)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 2/DoorDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorUp"]
+position = Vector2(-10.5, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="DoorRight" type="Area2D" parent="StaticBody2D room 1"]
+position = Vector2(5332.77, -2529.21)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 3/DoorLeft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorRight"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
 
 [node name="StaticBody2D room 2" type="StaticBody2D" parent="."]
 position = Vector2(311, -330)
@@ -361,6 +448,51 @@ polygon = PackedVector2Array(837, -970, 960, -969, 960, -937, 993, -937, 992, -8
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 2"]
 position = Vector2(23, -71)
 polygon = PackedVector2Array(253, -1000, 378, -1000, 379, -807, 475, -808, 475, -777, 506, -776, 506, -751, 506, -679, 538, -680, 538, -648, 570, -648, 571, -459, 537, -460, 537, -428, 414, -430, 414, -460, 381, -462, 381, -493, 318, -493, 317, -620, 254, -620, 254, -684, 190, -686, 190, -937, 254, -937)
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 2"]
+position = Vector2(1191, -643)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+
+[node name="DoorDown" type="Area2D" parent="StaticBody2D room 2"]
+position = Vector2(1182, 52)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 1/DoorUp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 2/DoorDown"]
+position = Vector2(-10.5, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="StaticBody2D room 3" type="StaticBody2D" parent="."]
+position = Vector2(3280, 1556)
+constant_linear_velocity = Vector2(1, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 3"]
+position = Vector2(74, 47)
+polygon = PackedVector2Array(-10, 49, 1080, 64, 1030, 250, 1297, 254, 1224, 63, 2352, 45, 2355, -549, 2578, -450, 2583, -809, 2373, -744, 2344, -1302, 1239, -1290, 1237, -1305, 1261, -1316, 1258, -1341, 1232, -1290, 1226, -1289, 1216, -1291, 1204, -1290, 1200, -1290, 1212, -1291, 1228, -1287, 1218, -1291, 1198, -1290, 1190, -1290, 1188, -1290, 1184, -1290, 1153, -1290, 1109, -1292, 1074, -1289, -13, -1304, -14, -747, -88, -737, -93, -764, -119, -760, -134, -773, -165, -768, -180, -773, -190, -792, -200, -792, -208, -809, -233, -809, -272, -805, -276, -480, -245, -478, -210, -490, -195, -503, -161, -505, -149, -520, -125, -525, -108, -538, -86, -539, -46, -546, -28, -554, -4, -544, -11, -10, -281, 181, -293, 299, 2617, 298, 2630, -678, 2628, -1568, -309, -1562, -319, 293)
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 3"]
+position = Vector2(1249, -625)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+
+[node name="DoorLeft" type="Area2D" parent="StaticBody2D room 3"]
+position = Vector2(-103, -594)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 1/DoorRight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 3/DoorLeft"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
 
 [node name="StaticBody2D room 4" type="StaticBody2D" parent="."]
 position = Vector2(324, 3468)
@@ -389,27 +521,35 @@ polygon = PackedVector2Array(1773, -712, 1900, -711, 1901, -583, 1773, -583)
 position = Vector2(49, 200)
 polygon = PackedVector2Array(1773, -263, 1901, -263, 1901, -135, 1773, -135)
 
-[node name="StaticBody2D room 6" type="StaticBody2D" parent="."]
-position = Vector2(-2671, 5616)
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 4"]
+position = Vector2(1175, -402)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
 
-[node name="CollisionPolygon2D room" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
-position = Vector2(25, -69)
-polygon = PackedVector2Array(-1, 1, 1048, 13, 1020, 230, 1319, 221, 1224, 18, 2320, 28, 2322, -542, 2321, -586, 2319, -655, 2306, -727, 2307, -1266, 1237, -1262, 1237, -1305, 1261, -1316, 1258, -1341, 1268, -1360, 1288, -1389, 1304, -1423, 1323, -1468, 1325, -1510, 1291, -1533, 1117, -1529, 1055, -1526, 989, -1521, 992, -1412, 1023, -1410, 1049, -1362, 1055, -1334, 1063, -1302, 1068, -1276, -3, -1266, -1, -744, -88, -737, -93, -764, -119, -760, -134, -773, -165, -768, -180, -773, -190, -792, -200, -792, -208, -809, -34, -744, -54, -658, -42, -585, -15, -555, -210, -490, -195, -503, -161, -505, -129, -522, -125, -525, -108, -538, -86, -539, -46, -546, -28, -554, -4, -544, -2, -15, -281, 181, -293, 299, 2617, 298, 2630, -678, 2628, -1568, -309, -1562, -316.676, -138.11, -319, 293)
+[node name="DoorUp" type="Area2D" parent="StaticBody2D room 4"]
+position = Vector2(1178, -1237)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 1/DoorDown")
 
-[node name="rock 1" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
-polygon = PackedVector2Array(226, -578, 353, -578, 353, -445, 226, -447)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 4/DoorUp"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
 
-[node name="rock 2" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
-polygon = PackedVector2Array(584, -1106, 712, -1105, 711, -974, 586, -975)
+[node name="DoorLeft" type="Area2D" parent="StaticBody2D room 4"]
+position = Vector2(-81, -443)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 5/DoorRight")
 
-[node name="rock 3" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
-polygon = PackedVector2Array(1809, -1105, 1934, -1104, 1935, -973, 1808, -974)
-
-[node name="rock 4" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
-polygon = PackedVector2Array(1088, -326, 1219, -325, 1219, -189, 1088, -190)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
-polygon = PackedVector2Array(1970, -546, 2100, -546, 2100, -410, 1969, -411, 1969, -546)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 4/DoorLeft"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
 
 [node name="StaticBody2D room 5" type="StaticBody2D" parent="."]
 position = Vector2(-2606.77, 3460.21)
@@ -443,6 +583,99 @@ polygon = PackedVector2Array(896.769, -942.21, 897.769, -1069.21, 784.769, -1070
 position = Vector2(-28.23, 143.79)
 polygon = PackedVector2Array(1344.77, -1086.21, 1472.77, -1086.21, 1473.77, -1166.21, 1600.77, -1166.21, 1600.77, -1231.21, 1727.77, -1230.21, 1728.77, -1103.21, 1599.77, -1102.21, 1601.77, -1039.21, 1473.77, -1038.21, 1472.77, -958.21, 1344.77, -958.21)
 
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 5"]
+position = Vector2(1058.77, -456.21)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+
+[node name="DoorRight" type="Area2D" parent="StaticBody2D room 5"]
+position = Vector2(2372.77, -443)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 4/DoorLeft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 5/DoorRight"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="DoorLeft" type="Area2D" parent="StaticBody2D room 5"]
+position = Vector2(-133.23, -443)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 8/DoorRight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 5/DoorLeft"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="DoorDown" type="Area2D" parent="StaticBody2D room 5"]
+position = Vector2(1122.77, 317.79)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 6/DoorUp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 5/DoorDown"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="StaticBody2D room 6" type="StaticBody2D" parent="."]
+position = Vector2(-2671, 5616)
+
+[node name="CollisionPolygon2D room" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
+position = Vector2(25, -69)
+polygon = PackedVector2Array(-1, 1, 1048, 13, 1020, 230, 1319, 221, 1224, 18, 2320, 28, 2322, -542, 2321, -586, 2319, -655, 2306, -727, 2307, -1266, 1237, -1262, 1237, -1305, 1261, -1316, 1258, -1341, 1268, -1360, 1288, -1389, 1304, -1423, 1323, -1468, 1325, -1510, 1291, -1533, 1117, -1529, 1055, -1526, 989, -1521, 992, -1412, 1023, -1410, 1049, -1362, 1055, -1334, 1063, -1302, 1068, -1276, -3, -1266, -1, -744, -88, -737, -93, -764, -119, -760, -134, -773, -165, -768, -180, -773, -190, -792, -200, -792, -208, -809, -34, -744, -54, -658, -42, -585, -15, -555, -210, -490, -195, -503, -161, -505, -129, -522, -125, -525, -108, -538, -86, -539, -46, -546, -28, -554, -4, -544, -2, -15, -281, 181, -293, 299, 2617, 298, 2630, -678, 2628, -1568, -309, -1562, -316.676, -138.11, -319, 293)
+
+[node name="rock 1" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
+polygon = PackedVector2Array(226, -578, 353, -578, 353, -445, 226, -447)
+
+[node name="rock 2" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
+polygon = PackedVector2Array(584, -1106, 712, -1105, 711, -974, 586, -975)
+
+[node name="rock 3" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
+polygon = PackedVector2Array(1809, -1105, 1934, -1104, 1935, -973, 1808, -974)
+
+[node name="rock 4" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
+polygon = PackedVector2Array(1088, -326, 1219, -325, 1219, -189, 1088, -190)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
+polygon = PackedVector2Array(1970, -546, 2100, -546, 2100, -410, 1969, -411, 1969, -546)
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 6"]
+position = Vector2(1251, -741)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+
+[node name="DoorUp" type="Area2D" parent="StaticBody2D room 6"]
+position = Vector2(1184, -1443)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 5/DoorDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 6/DoorUp"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="DoorDown" type="Area2D" parent="StaticBody2D room 6"]
+position = Vector2(1144, 84)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 7/DoorUp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 6/DoorDown"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
 [node name="StaticBody2D room 7" type="StaticBody2D" parent="."]
 position = Vector2(-2676, 7601)
 
@@ -464,6 +697,24 @@ polygon = PackedVector2Array(1715, -271, 1778, -271, 1778, -323, 1909, -323, 190
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 7"]
 polygon = PackedVector2Array(1599, -1189, 1827, -1189, 1827, -1070, 1893, -1070, 1893, -934, 1534, -935, 1534, -1070, 1599, -1070)
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 7"]
+position = Vector2(1192, -684)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+
+[node name="DoorUp" type="Area2D" parent="StaticBody2D room 7"]
+position = Vector2(1186, -1432)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 6/DoorDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 7/DoorUp"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
 
 [node name="StaticBody2D room 8" type="StaticBody2D" parent="."]
 position = Vector2(-2606.77, 3460.21)
@@ -487,5 +738,26 @@ polygon = PackedVector2Array(-1552.23, -106.21, -1031.23, -105.21, -1030.23, 28.
 [node name="rock 5" type="CollisionPolygon2D" parent="StaticBody2D room 8"]
 polygon = PackedVector2Array(-1291.23, -802.21, -1161.23, -802.21, -1161.23, -667.21, -1291.23, -667.21)
 
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 8"]
+position = Vector2(-1846.23, -411.21)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+
+[node name="DoorRight" type="Area2D" parent="StaticBody2D room 8"]
+position = Vector2(-538.23, -443)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 5/DoorLeft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 8/DoorRight"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
 [node name="EnemyRatKing" parent="." instance=ExtResource("11_ic0uy")]
 position = Vector2(-8487, 3148)
+
+[connection signal="pressed" from="GameOverUI/MarginContainer/NinePatchRect/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

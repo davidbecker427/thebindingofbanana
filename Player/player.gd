@@ -3,6 +3,7 @@ class_name Player
 
 var bullet_path = preload("res://Bullets/Bullet.tscn")
 var health = 6
+var can_teleport: bool = true
 signal died
 
 # Textures for player directions
@@ -73,7 +74,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		print("Player hit! Health:", health)
 
 		# Apply knockback to player, away from enemy
-		apply_knockback(body.global_position, 1200)
+		apply_knockback(body.global_position, 800)
 
 		# Also apply knockback to enemy, away from player
 		if "apply_knockback" in body:
@@ -82,3 +83,9 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		if health <= 0:
 			died.emit()
 			queue_free()
+			
+
+func disable_teleport_for(seconds: float) -> void:
+	can_teleport = false
+	await get_tree().create_timer(seconds).timeout
+	can_teleport = true

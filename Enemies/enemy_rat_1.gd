@@ -7,6 +7,7 @@ var speed: float = 600.0
 var direction := Vector2.ZERO
 var stop_distance := 20.0
 
+
 # Knockback variables
 var knockback_velocity := Vector2.ZERO
 var knockback_friction := 1500.0  # Adjust to control knockback slow down speed
@@ -66,3 +67,4 @@ func _on_Hitbox_body_entered(body: Node2D) -> void:
 		# Also tell player to apply knockback, away from enemy
 		if "apply_knockback" in body:
 			body.apply_knockback(global_position, 1200)
+			

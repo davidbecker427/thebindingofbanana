@@ -7,6 +7,7 @@ var speed: float = 600.0
 var direction := Vector2.ZERO
 var stop_distance := 20.0
 
+
 # Knockback variables
 var knockback_velocity := Vector2.ZERO
 var knockback_friction := 1500.0  # How fast knockback slows down (adjust as needed)
@@ -57,3 +58,4 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		if player == null:
 			player = body
 			print(name + " found player")
+			
