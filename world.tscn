@@ -418,6 +418,59 @@ position = Vector2(620, 3005)
 [node name="EnemyRat2" parent="." instance=ExtResource("7_pkg7o")]
 position = Vector2(938, -1137)
 
+[node name="StaticBody2D room 1" type="StaticBody2D" parent="."]
+position = Vector2(-2606.77, 3460.21)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 1"]
+position = Vector2(2902.77, -1913.21)
+polygon = PackedVector2Array(1072, 6, 1075, 58, 1057, 58, 1055, 75, 1042, 73, 1042, 142, 1024, 142, 1027, 195, 1009, 193, 1161, 193, 1164, 342, 992, 348, 992, 308, -315, 310, -315, -1544, 1150, -1550, 1153, -1491, 993, -1485, 989, -1443, 1009, -1444, 1005, -1405, 1029, -1412, 1021, -1381, 1041, -1376, 1040, -1347, 1053, -1347, 1053, -1323, 1074, -1317, 1073, -1255, 1, -1248, -11, 8)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D room 1"]
+position = Vector2(5213.77, -1913.21)
+polygon = PackedVector2Array(-1160, -1486, -1162, -1553, 309, -1539, 311, 311, -929, 310, -927, 342, -1150, 345, -1151, 190, -1056, 189, -995, 193, -1008, 197, -1010, 156, -1028, 160, -1027, 125, -1040, 127, -1043, 90, -1056, 91, -1058, 73, -1072, 76, -1076, 19, -1056, 23, -1059, 3, 0, 4, 2, -538, 36, -539, 64, -540, 66, -523, 114, -522, 113, -508, 129, -500, 131, -491, 180, -487, 182, -472, 214, -471, 216, -457, 263, -457, 261, -794, 216, -793, 215, -778, 166, -776, 165, -741, 74, -742, 69, -691, 4, -690, 1, -1252, -1058, -1252, -1060, -1321, -1043, -1322, -1044, -1353, -1026, -1351, -1028, -1390, -1007, -1389, -1012, -1422, -992, -1422, -990, -1489)
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 1"]
+position = Vector2(4076.77, -2529.21)
+zoom = Vector2(0.387, 0.346)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("4_aqk2v")
+is_starting_camera = true
+
+[node name="DoorDown" type="Area2D" parent="StaticBody2D room 1"]
+position = Vector2(4052.77, -1805.21)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 4/DoorUp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorDown"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="DoorUp" type="Area2D" parent="StaticBody2D room 1"]
+position = Vector2(4076.77, -3248.21)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 2/DoorDown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorUp"]
+position = Vector2(-10.5, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
+[node name="DoorRight" type="Area2D" parent="StaticBody2D room 1"]
+position = Vector2(5332.77, -2529.21)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("11_k3n1d")
+linked_door_path = NodePath("../../StaticBody2D room 3/DoorLeft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorRight"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_2o6r5")
+
 [node name="StaticBody2D room 2" type="StaticBody2D" parent="."]
 position = Vector2(311, -330)
 
@@ -472,10 +525,10 @@ position = Vector2(3280, 1556)
 constant_linear_velocity = Vector2(1, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 3"]
-polygon = PackedVector2Array(1105, 64, 1106, 133, 1090, 133, 1090, 167, 1074, 167, 1074, 251, 1176, 251, 1179, 405, 993, 404, 993, 388, -313, 387, -330, -622, -231, -624, -230, -496, -198, -497, -199, -513, -166, -513, -165, -531, -114, -530, -118, -549, -3, -547, -3, 61)
+polygon = PackedVector2Array(1105, 64, 1106, 133, 1090, 133, 1090, 167, 1074, 167, 1074, 251, 1176, 251, 1179, 405, 993, 404, 993, 388, -313, 387, -330, -622, -231, -624, -230, -496, -198, -497, -199, -513, -166, -513, -165, -531, -114, -530, -98, -530, -5, -530, -3, 61)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D room 3"]
-polygon = PackedVector2Array(-332, -625, -233, -627, -233, -750, -198, -751, -198, -732, -184, -731, -182, -719, -167, -718, -166, -699, -99, -699, -100, -681, -52, -682, -52, -665, -19, -665, -4, -664, -2, -1279, 2641, -1305, 2648, -1595, -368, -1585, -368, -626)
+polygon = PackedVector2Array(-332, -625, -233, -627, -233, -750, -198, -751, -198, -732, -184, -731, -182, -719, -167, -718, -166, -699, -99, -699, -100, -681, -52, -682, -40, -682, -21, -683, -3, -682, -2, -1279, 2641, -1305, 2648, -1595, -368, -1585, -368, -626)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D room 3"]
 polygon = PackedVector2Array(1177, 407, 1176, 251, 1267, 251, 1270, 199, 1256, 201, 1254, 153, 1223, 152, 1220, 65, 2357, 64, 2365, -561, 2409, -562, 2409, -547, 2542, -549, 2541, -644, 2654, -647, 2675, 372, 2297, 372, 2297, 382, 2231, 388, 2231, 408)
@@ -565,10 +618,11 @@ polygon = PackedVector2Array(1176, -1323, 1273, -1321, 1275, -1270, 1257, -1268,
 position = Vector2(-2606.77, 3460.21)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 5"]
-polygon = PackedVector2Array(-54.23, -393.21, -132.23, -394.21, -132.23, -380.21, -199.23, -374.21, -199.23, -361.21, -230.23, -360.21, -232.23, -340.21, -278.23, -344.21, -281.23, -466.21, -358.23, -464.21, -355.23, 476.79, 1122.77, 473.79, 1117.77, 403.79, 1023.77, 402.79, 1025.77, 355.79, 1037.77, 355.79, 1035.77, 282.79, 1054.77, 282.79, 1055.77, 233.79, 1023.77, 236.79, 1024.77, 217.79, -59.23, 215.79)
+polygon = PackedVector2Array(-55.23, -380.21, -112.23, -379.21, -132.23, -380.21, -199.23, -374.21, -199.23, -361.21, -230.23, -360.21, -232.23, -340.21, -278.23, -344.21, -281.23, -466.21, -358.23, -464.21, -355.23, 476.79, 1122.77, 473.79, 1117.77, 403.79, 1023.77, 402.79, 1025.77, 355.79, 1037.77, 355.79, 1035.77, 282.79, 1054.77, 282.79, 1055.77, 233.79, 1023.77, 236.79, 1024.77, 217.79, -59.23, 215.79)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D room 5"]
-polygon = PackedVector2Array(-53.23, -519.21, -134.23, -514.21, -133.23, -529.21, -152.23, -531.21, -149.23, -544.21, -218.23, -547.21, -216.23, -563.21, -280.23, -562.21, -281.23, -462.21, -361.23, -468.21, -361.23, -1450.21, 2603.77, -1445.21, 2612.77, -461.21, 2510.77, -464.21, 2508.77, -548.21, 2458.77, -546.21, 2457.77, -530.21, 2378.77, -531.21, 2359.77, -530.21, 2346.77, -530.21, 2328.77, -529.21, 2300.77, -531.21, 2295.77, -1122.21, -55.23, -1126.21)
+position = Vector2(-0.22998, -0.209961)
+polygon = PackedVector2Array(-53, -532, -115.23, -531.21, -133.23, -529.21, -152.23, -531.21, -149.23, -544.21, -218.23, -547.21, -216.23, -563.21, -280.23, -562.21, -281.23, -462.21, -361.23, -468.21, -361.23, -1450.21, 2603.77, -1445.21, 2612.77, -461.21, 2510.77, -464.21, 2508.77, -548.21, 2458.77, -546.21, 2457.77, -530.21, 2378.77, -531.21, 2359.77, -530.21, 2346.77, -530.21, 2328.77, -529.21, 2300.77, -531.21, 2295.77, -1122.21, -55.23, -1126.21)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D room 5"]
 polygon = PackedVector2Array(1185.77, 215.79, 1172.77, 235.79, 1171.77, 297.79, 1185.77, 298.79, 1186.77, 331.79, 1203.77, 332.79, 1201.77, 371.79, 1225.77, 367.79, 1221.77, 404.79, 1121.77, 405.79, 1120.77, 475.79, 2546.77, 479.79, 2598.77, 460.79, 2598.77, -462.21, 2508.77, -460.21, 2512.77, -365.21, 2451.77, -363.21, 2455.77, -377.21, 2377.77, -381.21, 2366.77, -382.21, 2346.77, -382.21, 2329.77, -382.21, 2290.77, -382.21, 2291.77, -366.21, 2316.77, -363.21, 2318.77, 219.79)
@@ -644,7 +698,7 @@ shape = SubResource("RectangleShape2D_2o6r5")
 position = Vector2(-2671, 5616)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
-polygon = PackedVector2Array(1216, -1364, 1217, -1384, 1237, -1383, 1230, -1450, 1248, -1451, 1247, -1480, 1267, -1481, 1269, -1530, 1181, -1531, 1177, -1684, 2666, -1674, 2673, 297, 1153, 308, 1151, 230, 1147, 187, 1264, 189, 1266, 148, 1252, 153, 1252, 117, 1234, 116, 1234, 82, 1216, 84, 1216, 15, 1238, 14, 1234, -3, 2362, -1, 2362, -580, 2346, -582, 2342, -1344, 1217, -1344)
+polygon = PackedVector2Array(1216, -1364, 1217, -1384, 1237, -1383, 1230, -1450, 1248, -1451, 1247, -1480, 1267, -1481, 1269, -1530, 1181, -1531, 1177, -1684, 2666, -1674, 2652, -376, 2673, 297, 1153, 308, 1151, 230, 1147, 187, 1264, 189, 1266, 148, 1252, 153, 1252, 117, 1234, 116, 1234, 82, 1216, 84, 1216, 15, 1238, 14, 1234, -3, 2362, -1, 2362, -580, 2346, -582, 2342, -1344, 1217, -1344)
 
 [node name="rock 1" type="CollisionPolygon2D" parent="StaticBody2D room 6"]
 polygon = PackedVector2Array(226, -578, 353, -578, 353, -445, 226, -447)
@@ -732,59 +786,6 @@ script = ExtResource("11_k3n1d")
 linked_door_path = NodePath("../../StaticBody2D room 6/DoorDown")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 7/DoorUp"]
-position = Vector2(-3, 0)
-shape = SubResource("RectangleShape2D_2o6r5")
-
-[node name="StaticBody2D room 1" type="StaticBody2D" parent="."]
-position = Vector2(-2606.77, 3460.21)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 1"]
-position = Vector2(2902.77, -1913.21)
-polygon = PackedVector2Array(1072, 6, 1075, 58, 1057, 58, 1055, 75, 1042, 73, 1042, 142, 1024, 142, 1027, 195, 1009, 193, 1161, 193, 1164, 342, 992, 348, 992, 308, -315, 310, -315, -1544, 1150, -1550, 1153, -1491, 993, -1485, 989, -1443, 1009, -1444, 1005, -1405, 1029, -1412, 1021, -1381, 1041, -1376, 1040, -1347, 1053, -1347, 1053, -1323, 1074, -1317, 1073, -1255, 1, -1248, -11, 8)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D room 1"]
-position = Vector2(5213.77, -1913.21)
-polygon = PackedVector2Array(-1160, -1486, -1162, -1553, 309, -1539, 311, 311, -929, 310, -927, 342, -1150, 345, -1151, 190, -1056, 189, -995, 193, -1008, 197, -1010, 156, -1028, 160, -1027, 125, -1040, 127, -1043, 90, -1056, 91, -1058, 73, -1072, 76, -1076, 19, -1056, 23, -1059, 3, 0, 4, 2, -538, 36, -539, 64, -540, 66, -523, 114, -522, 113, -508, 129, -500, 131, -491, 180, -487, 182, -472, 214, -471, 216, -457, 263, -457, 261, -794, 216, -793, 215, -778, 166, -776, 165, -741, 74, -742, 69, -691, 4, -690, 1, -1252, -1058, -1252, -1060, -1321, -1043, -1322, -1044, -1353, -1026, -1351, -1028, -1390, -1007, -1389, -1012, -1422, -992, -1422, -990, -1489)
-
-[node name="Camera2D" type="Camera2D" parent="StaticBody2D room 1"]
-position = Vector2(4076.77, -2529.21)
-zoom = Vector2(0.387, 0.346)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-script = ExtResource("4_aqk2v")
-is_starting_camera = true
-
-[node name="DoorDown" type="Area2D" parent="StaticBody2D room 1"]
-position = Vector2(4052.77, -1805.21)
-collision_layer = 8
-collision_mask = 3
-script = ExtResource("11_k3n1d")
-linked_door_path = NodePath("../../StaticBody2D room 4/DoorUp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorDown"]
-position = Vector2(-3, 0)
-shape = SubResource("RectangleShape2D_2o6r5")
-
-[node name="DoorUp" type="Area2D" parent="StaticBody2D room 1"]
-position = Vector2(4076.77, -3248.21)
-collision_layer = 8
-collision_mask = 3
-script = ExtResource("11_k3n1d")
-linked_door_path = NodePath("../../StaticBody2D room 2/DoorDown")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorUp"]
-position = Vector2(-10.5, 0)
-shape = SubResource("RectangleShape2D_2o6r5")
-
-[node name="DoorRight" type="Area2D" parent="StaticBody2D room 1"]
-position = Vector2(5332.77, -2529.21)
-rotation = 1.5708
-collision_layer = 8
-collision_mask = 3
-script = ExtResource("11_k3n1d")
-linked_door_path = NodePath("../../StaticBody2D room 3/DoorLeft")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 1/DoorRight"]
 position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_2o6r5")
 
