@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgp42xc0q6hmx"]
+[gd_scene load_steps=6 format=3 uid="uid://dgp42xc0q6hmx"]
 
 [ext_resource type="Script" uid="uid://lp4yocmxpdvu" path="res://Enemies/enemy_rat_1.gd" id="1_ku8lu"]
 [ext_resource type="Texture2D" uid="uid://duewksnbbbtcc" path="res://texturs/EnemyRat2.png" id="1_q4glf"]
+[ext_resource type="PackedScene" uid="uid://d2luuin6sa3c4" path="res://healthbar/healthbar.tscn" id="3_qlvjw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ku8lu"]
 radius = 55.0
@@ -30,6 +31,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(21, -1)
 shape = SubResource("CircleShape2D_q4glf")
+
+[node name="Healthbar" parent="." instance=ExtResource("3_qlvjw")]
+offset_left = -64.0
+offset_top = -123.0
+offset_right = 67.0
+offset_bottom = -109.0
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

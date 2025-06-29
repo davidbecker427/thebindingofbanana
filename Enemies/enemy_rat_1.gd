@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Enemy_Rat
 
+@onready var healthbar = $Healthbar
+
 var player: Player = null
 
 var speed: float = 600.0
@@ -11,6 +13,28 @@ var stop_distance := 20.0
 # Knockback variables
 var knockback_velocity := Vector2.ZERO
 var knockback_friction := 1500.0  # Adjust to control knockback slow down speed
+
+var health = 4 : set = _set_health
+var die = _die()
+var is_alive = true
+
+var on_dead = func():
+	pass
+
+func _ready():
+	health = 6
+	on_dead = die
+	healthbar.init_health(health)
+
+func _set_health(value):
+	if health <= 0 && is_alive:
+		_die()
+	
+	healthbar.health = health
+
+func _die():
+	if health <= 0:
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	if player != null:
@@ -68,3 +92,8 @@ func _on_Hitbox_body_entered(body: Node2D) -> void:
 		if "apply_knockback" in body:
 			body.apply_knockback(global_position, 1200)
 			
+	if body.is_in_group("bullet"):
+		health -= 1
+		
+		if health <= 0:
+			queue_free()

@@ -369,7 +369,7 @@ text = "Main Menu
 
 [node name="Player" parent="." instance=ExtResource("2_aqk2v")]
 top_level = true
-position = Vector2(1571, 660)
+position = Vector2(468, 904)
 motion_mode = 1
 player_sprite_down = ExtResource("3_dwbse")
 
@@ -383,7 +383,7 @@ tile_set = SubResource("TileSet_gbfbk")
 position = Vector2(-2050, 5299)
 
 [node name="EnemyRat1" parent="." instance=ExtResource("7_pkg7o")]
-position = Vector2(3585, 866)
+position = Vector2(2152, 1005)
 
 [node name="EnemyWormApple4" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(1768, 2785)
@@ -395,7 +395,7 @@ position = Vector2(-1484, 2472)
 position = Vector2(2165, 3073)
 
 [node name="EnemyWormApple" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(4465, 660)
+position = Vector2(1952, -1178)
 
 [node name="EnemyWormApple2" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(2259, -1119)
@@ -845,7 +845,7 @@ position = Vector2(-0.0002461, -68)
 shape = SubResource("RectangleShape2D_2o6r5")
 
 [node name="EnemyRatKing" parent="." instance=ExtResource("11_ic0uy")]
-position = Vector2(-8487, 3148)
+position = Vector2(-8486, 3103)
 
 [node name="StaticBody2D boss room" type="StaticBody2D" parent="."]
 position = Vector2(-8600, 3711)

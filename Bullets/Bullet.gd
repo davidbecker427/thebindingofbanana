@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Bullet
 
 # setting some variables
 var pos: Vector2
@@ -22,7 +23,7 @@ func _physics_process(delta):
 		
 		# if statement for removing the bullet/enemies
 		if collider.is_in_group("enemies"):
-			collider.queue_free()  # Remove enemy
+			#collider.queue_free()  # Remove enemy
 			queue_free()           # Remove bullet
 			return                 # Stop after collision
 		else:
