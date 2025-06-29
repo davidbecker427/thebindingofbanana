@@ -6,6 +6,11 @@ var health = 6
 var can_teleport: bool = true
 signal died
 
+# preload the heart textures
+var full_heart = preload("res://texturs/Tbob heart full.png")
+var half_heart = preload("res://texturs/tbob heart half.png")
+var empty_heart = preload("res://texturs/tbob heart empty.png")
+
 # Textures for player directions
 @export var player_sprite_up: Texture2D
 @export var player_sprite_down: Texture2D
@@ -71,6 +76,7 @@ func apply_knockback(from_position: Vector2, force: float):
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy_Rat or body is Enemy_WormApple:
 		health -= 1
+		update_hearts(health)
 		print("Player hit! Health:", health)
 
 		# Apply knockback to player, away from enemy
@@ -89,3 +95,25 @@ func disable_teleport_for(seconds: float) -> void:
 	can_teleport = false
 	await get_tree().create_timer(seconds).timeout
 	can_teleport = true
+	
+
+# updating the UI with player health
+func update_hearts(current_health: int) -> void:
+	# get the UI elements for the hearts
+	var hearts = [
+		get_node("/root/World/InGameUI/InGameUI/MarginContainer/VBoxContainer/Heart1"),
+		get_node("/root/World/InGameUI/InGameUI/MarginContainer/VBoxContainer/Heart2"),
+		get_node("/root/World/InGameUI/InGameUI/MarginContainer/VBoxContainer/Heart3")
+	]
+	
+	for i in range(hearts.size()):
+		# set the health for each heart, so 2 is a full heart, 1 half a heart and 0 is an empty heart
+		var heart_health = clamp(current_health - (i * 2), 0, 2)
+		# then set the texture of the hearts based on the player health
+		match heart_health:
+			2:
+				hearts[i].texture = full_heart
+			1:
+				hearts[i].texture = half_heart
+			0:
+				hearts[i].texture = empty_heart
