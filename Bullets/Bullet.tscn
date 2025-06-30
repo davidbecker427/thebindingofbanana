@@ -7,7 +7,7 @@
 size = Vector2(53, 91)
 
 [node name="Bullet" type="CharacterBody2D" groups=["bullet"]]
-collision_layer = 4
+collision_layer = 68
 collision_mask = 45
 script = ExtResource("2_kamwa")
 

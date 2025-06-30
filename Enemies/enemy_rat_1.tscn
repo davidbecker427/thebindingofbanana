@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgp42xc0q6hmx"]
+[gd_scene load_steps=7 format=3 uid="uid://dgp42xc0q6hmx"]
 
 [ext_resource type="Script" uid="uid://lp4yocmxpdvu" path="res://Enemies/enemy_rat_1.gd" id="1_ku8lu"]
 [ext_resource type="Texture2D" uid="uid://duewksnbbbtcc" path="res://texturs/EnemyRat2.png" id="1_q4glf"]
 [ext_resource type="PackedScene" uid="uid://d2luuin6sa3c4" path="res://healthbar/healthbar.tscn" id="3_qlvjw"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ku8lu"]
-radius = 55.0
-height = 180.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_q4glf"]
 radius = 511.004
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlvjw"]
+radius = 60.0
+height = 180.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_imnqq"]
 
 [node name="EnemyRat1" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
@@ -20,15 +22,12 @@ script = ExtResource("1_ku8lu")
 scale = Vector2(3, 3)
 texture = ExtResource("1_q4glf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21, 0)
-shape = SubResource("CapsuleShape2D_ku8lu")
-
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+visible = false
 position = Vector2(21, -1)
 shape = SubResource("CircleShape2D_q4glf")
 
@@ -38,5 +37,18 @@ offset_top = -123.0
 offset_right = 67.0
 offset_bottom = -109.0
 
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 69
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(24, -1)
+shape = SubResource("CapsuleShape2D_qlvjw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_imnqq")
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
