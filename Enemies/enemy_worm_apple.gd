@@ -6,7 +6,7 @@ var player: Player = null
 var speed: float = 600.0
 var direction := Vector2.ZERO
 var stop_distance := 20.0
-
+var health = 2
 
 # Knockback variables
 var knockback_velocity := Vector2.ZERO
@@ -59,3 +59,21 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 			player = body
 			print(name + " found player")
 			
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	# When colliding with player, apply knockback to both
+	if body is Player:
+		# Apply knockback to self (enemy), away from player
+		apply_knockback(body.global_position, 1200)
+		
+		# Also tell player to apply knockback, away from enemy
+		if "apply_knockback" in body:
+			body.apply_knockback(global_position, 1200)
+			
+	
+	if body is Bullet:
+		health -= 1
+		print(health)
+		if health <= 0:
+			queue_free()

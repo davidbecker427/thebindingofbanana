@@ -437,7 +437,7 @@ position = Vector2(1952, -1178)
 position = Vector2(4066.69, 1238.91)
 
 [node name="EnemyWormApple15" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(4083, 994)
+position = Vector2(4078, 1019)
 
 [node name="EnemyWormApple14" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(4073, 808)
@@ -906,7 +906,7 @@ position = Vector2(-0.0002461, -68)
 shape = SubResource("RectangleShape2D_2o6r5")
 
 [node name="EnemyRatKing" parent="." instance=ExtResource("11_ic0uy")]
-position = Vector2(-8486, 3103)
+position = Vector2(-8436, 3075)
 
 [node name="StaticBody2D boss room" type="StaticBody2D" parent="."]
 position = Vector2(-8600, 3711)

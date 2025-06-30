@@ -21,15 +21,7 @@ func _ready():
 	healthbar.init_health(health)
 	healthbar.health = health
 
-#func _set_health(value):
-	#if health <= 0 && is_alive:
-		#_die()
-	#
-	#healthbar.health = health
-#
-#func _die():
-	#if health <= 0:
-		#queue_free()
+
 
 func _physics_process(delta: float) -> void:
 	if player != null:
