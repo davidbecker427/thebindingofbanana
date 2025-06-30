@@ -15,12 +15,12 @@ func _ready():
 func _physics_process(delta):
 	velocity = Vector2(speed, 0).rotated(dir)
 	move_and_slide()
-
+#
 # check if the bullet has collided with anything
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		
+		#
 		# if statement for removing the bullet/enemies
 		if collider.is_in_group("enemies"):
 			#collider.queue_free()  # Remove enemy
