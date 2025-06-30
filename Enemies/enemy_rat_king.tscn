@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dlm05wp27nm3e" path="res://Enemies/enemy_rat_king.gd" id="1_hmju4"]
 [ext_resource type="Texture2D" uid="uid://6arldlvoxk0b" path="res://texturs/EnemyRatKingflipper.png" id="2_hmju4"]
-[ext_resource type="PackedScene" uid="uid://d2luuin6sa3c4" path="res://healthbar/healthbar.tscn" id="3_cnpte"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnpte"]
 
@@ -35,20 +34,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_cnpte")
-
-[node name="Healthbar" parent="." instance=ExtResource("3_cnpte")]
-offset_left = -145.0
-offset_top = -171.0
-offset_right = 147.0
-offset_bottom = -146.0
-
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 69
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(-32, -5)
-shape = SubResource("CapsuleShape2D_r5klr")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

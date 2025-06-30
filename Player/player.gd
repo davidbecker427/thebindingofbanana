@@ -77,7 +77,6 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy_Rat or body is Enemy_WormApple:
 		health -= 1
 		update_hearts(health)
-		print("Player hit! Health:", health)
 
 		# Apply knockback to player, away from enemy
 		apply_knockback(body.global_position, 800)

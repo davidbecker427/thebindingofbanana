@@ -22,10 +22,6 @@ func _physics_process(delta):
 		var collider = collision.get_collider()
 		#
 		# if statement for removing the bullet/enemies
-		if collider.is_in_group("enemies"):
-			#collider.queue_free()  # Remove enemy
+		if collider:
 			queue_free()           # Remove bullet
 			return                 # Stop after collision
-		else:
-			queue_free()           # Remove bullet if hit something else
-			return

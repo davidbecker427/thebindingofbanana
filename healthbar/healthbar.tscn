@@ -1,50 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2luuin6sa3c4"]
+[gd_scene load_steps=4 format=3 uid="uid://d2luuin6sa3c4"]
 
 [ext_resource type="Script" uid="uid://l1x8y64ned3m" path="res://healthbar/healthbar.gd" id="1_ubhit"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y66kq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubhit"]
+bg_color = Color(0.557891, 0, 0.0579423, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngjae"]
 bg_color = Color(0.218384, 0.706916, 0.373814, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m858o"]
-bg_color = Color(0.172833, 0.172833, 0.172833, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-shadow_color = Color(0, 0, 0, 0.439216)
-shadow_offset = Vector2(0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohyyn"]
-bg_color = Color(1, 1, 1, 1)
 
 [node name="Healthbar" type="ProgressBar"]
 z_index = 1
 offset_right = 240.0
 offset_bottom = 4.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_y66kq")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/background = SubResource("StyleBoxFlat_ubhit")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ngjae")
-step = 1.0
-value = 60.0
-show_percentage = false
 script = ExtResource("1_ubhit")
-
-[node name="damagebar" type="ProgressBar" parent="."]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_m858o")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ohyyn")
-value = 80.0
-show_percentage = false
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
