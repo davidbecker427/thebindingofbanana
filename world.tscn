@@ -398,7 +398,7 @@ position = Vector2(-2050, 5299)
 position = Vector2(5042, 1029)
 
 [node name="EnemyWormApple4" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(1768, 2785)
+position = Vector2(2478, 2656)
 
 [node name="EnemyWormApple5" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(-1484, 2472)
@@ -419,16 +419,16 @@ position = Vector2(-4274, 3593)
 position = Vector2(-2335, 7363)
 
 [node name="EnemyWormApple8" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(-1617, 6797)
+position = Vector2(-1751, 7127)
 
 [node name="EnemyWormApple6" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(-1525, 4937)
+position = Vector2(-1554, 5092)
 
 [node name="EnemyWormApple17" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(1176.2, 2638.08)
+position = Vector2(1109, 3014)
 
 [node name="EnemyWormApple3" parent="." instance=ExtResource("10_wse8f")]
-position = Vector2(2165, 3073)
+position = Vector2(2198, 3219)
 
 [node name="EnemyWormApple" parent="." instance=ExtResource("10_wse8f")]
 position = Vector2(1952, -1178)

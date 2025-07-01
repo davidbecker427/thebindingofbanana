@@ -74,7 +74,7 @@ func apply_knockback(from_position: Vector2, force: float):
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is Enemy_Rat or body is Enemy_WormApple:
+	if body is Enemy_Rat or body is Enemy_WormApple or body is Enemy_Rat_King:
 		health -= 1
 		update_hearts(health)
 

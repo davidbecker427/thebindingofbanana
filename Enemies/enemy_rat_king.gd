@@ -11,8 +11,18 @@ var stop_distance := 20.0
 # Knockback variables
 var knockback_velocity := Vector2.ZERO
 var knockback_friction := 1500.0  # Adjust to control knockback slow down speed
-var health = 25
 
+var health := 100:
+	set = _set_health
+var health_max = 100
+var health_min = 0
+
+func _set_health(value):
+	health = value
+	print("Health updated to: ", health)
+	# update health bar here or emit signal
+	if health <= 0:
+		queue_free()
 
 #enemy movement
 func _physics_process(delta: float) -> void:
@@ -75,6 +85,8 @@ func _on_player_detector_body_exited(body: Node2D) -> void:
 			print(name + "lost player")
 
 
+
+
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	# When colliding with player, apply knockback to both
 	if body is Player:
@@ -87,7 +99,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			
 	
 	if body is Bullet:
-		health -= 1
+		health -= 12
 		print(health)
 		if health <= 0:
 			queue_free()

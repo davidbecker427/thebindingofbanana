@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccijl10xxmg12"]
+[gd_scene load_steps=7 format=3 uid="uid://ccijl10xxmg12"]
 
 [ext_resource type="Script" uid="uid://iromkeqhtta5" path="res://Enemies/enemy_worm_apple.gd" id="1_2vjol"]
 [ext_resource type="Texture2D" uid="uid://dlk5v6xjx0gd1" path="res://texturs/WormAppleEnemy.png" id="1_ovllb"]
+[ext_resource type="PackedScene" uid="uid://d2luuin6sa3c4" path="res://healthbar/healthbar.tscn" id="3_p0hi5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2vjol"]
 
@@ -22,6 +23,7 @@ script = ExtResource("1_2vjol")
 texture = ExtResource("1_ovllb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_2vjol")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
@@ -29,7 +31,6 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-visible = false
 shape = SubResource("CapsuleShape2D_p0hi5")
 
 [node name="hitbox" type="Area2D" parent="."]
@@ -38,6 +39,12 @@ collision_mask = 69
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CapsuleShape2D_ovvyx")
+
+[node name="Healthbar" parent="." instance=ExtResource("3_p0hi5")]
+offset_left = -121.0
+offset_top = -160.0
+offset_right = 119.0
+offset_bottom = -93.0
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
