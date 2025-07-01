@@ -1,10 +1,10 @@
 extends CharacterBody2D
 class_name Enemy_Rat_King
 
-@onready var healthbar = $Healthbar
+
 
 var player: Player = null
-var bullet_path = preload("res://Bullets/cheesebullet.tscn")
+#var bullet_path = preload("res://Bullets/cheesebullet.tscn")
 var speed: float = 600.0
 var direction := Vector2.ZERO
 var stop_distance := 20.0
@@ -98,6 +98,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			body.apply_knockback(global_position, 1200)
 			
 	
+	#checks if the detected body is a bullet and removes health from enemy
 	if body is Bullet:
 		health -= 12
 		print(health)

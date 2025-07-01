@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name Enemy_Rat
 
-@onready var healthbar = $Healthbar
-
 var player: Player = null
 
 var speed: float = 600.0

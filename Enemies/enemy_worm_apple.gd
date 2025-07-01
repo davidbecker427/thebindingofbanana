@@ -87,6 +87,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			body.apply_knockback(global_position, 1200)
 			
 	
+	#checks if the detected body is a bullet and removes health from enemy
 	if body is Bullet:
 		health -= 34
 		print(health)
