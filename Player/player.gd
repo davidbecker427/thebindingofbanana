@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+# preload bullet, set health and can_teleport
 var bullet_path = preload("res://Bullets/Bullet.tscn")
 var health = 6
 var can_teleport: bool = true
@@ -58,8 +59,9 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("shoot_right"):
 		fire(player_sprite_right, 0, $Node2D_right)
 
+# function for firing the bullets
 func fire(player_sprite, direction, node):
-	sprite.texture = player_sprite  # Change player sprite
+	sprite.texture = player_sprite
 	
 	var bullet = bullet_path.instantiate()
 	bullet.dir = direction
@@ -104,7 +106,7 @@ func update_hearts(current_health: int) -> void:
 		get_node("/root/World/InGameUI/InGameUI/MarginContainer/VBoxContainer/Heart2"),
 		get_node("/root/World/InGameUI/InGameUI/MarginContainer/VBoxContainer/Heart3")
 	]
-	
+
 	for i in range(hearts.size()):
 		# set the health for each heart, so 2 is a full heart, 1 half a heart and 0 is an empty heart
 		var heart_health = clamp(current_health - (i * 2), 0, 2)

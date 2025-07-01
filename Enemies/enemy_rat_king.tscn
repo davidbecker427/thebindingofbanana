@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d2luuin6sa3c4" path="res://healthbar/healthbar.tscn" id="3_cnpte"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnpte"]
+radius = 59.7746
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnpte"]
 radius = 892.0

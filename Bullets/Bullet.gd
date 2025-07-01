@@ -21,7 +21,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		#
-		# if statement for removing the bullet/enemies
+		# if statement for removing the bulletW
 		if collider:
 			queue_free()           # Remove bullet
 			return                 # Stop after collision

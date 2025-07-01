@@ -6,6 +6,7 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node) -> void:
+	# if the player collides with the door, teleport and turn of can_teleport so theres no loop
 	if body.name == "Player" and body.has_method("disable_teleport_for") and body.can_teleport:
 		body.can_teleport = false  # Prevent instant retrigger
 		var linked_door = get_node_or_null(linked_door_path)

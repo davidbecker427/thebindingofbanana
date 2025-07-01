@@ -609,7 +609,7 @@ script = ExtResource("11_k3n1d")
 linked_door_path = NodePath("../../StaticBody2D room 1/DoorRight")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D room 3/DoorLeft"]
-position = Vector2(-3, 0)
+position = Vector2(-18.0001, -17.9999)
 shape = SubResource("RectangleShape2D_2o6r5")
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D room 3"]
@@ -619,7 +619,7 @@ polygon = PackedVector2Array(2542, -643, 2653, -647, 2655, -1594, 2646, -1593, 2
 position = Vector2(324, 3468)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D room 4"]
-polygon = PackedVector2Array(1109, -1153, 1111, -1218, 1094, -1219, 1092, -1269, 1077, -1271, 1078, -1321, 1177, -1321, 1172, -1457, -326, -1458, -315, -449, -229, -447, -226, -573, -164, -572, -163, -555, -98, -556, -97, -540, -80, -539, -80, -521, 1, -521, -2, -1135, 1089, -1133, 1094, -1150)
+polygon = PackedVector2Array(1109, -1153, 1111, -1218, 1094, -1219, 1092, -1269, 1077, -1271, 1078, -1321, 1177, -1321, 1172, -1457, -326, -1458, -315, -449, -229, -447, -226, -573, -164, -572, -163, -555, -98, -556, -97, -540, -80, -539, -55, -540, -1, -538, -2, -1135, 1089, -1133, 1094, -1150)
 
 [node name="rock 1" type="CollisionPolygon2D" parent="StaticBody2D room 4"]
 position = Vector2(20, 211)
@@ -672,7 +672,7 @@ position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_2o6r5")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D room 4"]
-polygon = PackedVector2Array(1176, -1323, 1273, -1321, 1275, -1270, 1257, -1268, 1259, -1236, 1240, -1235, 1241, -1169, 1225, -1167, 1224, -1152, 1225, -1135, 2350, -1135, 2363, 210, -3, 212, -3, -405, -76, -405, -74, -381, -143, -386, -140, -366, -177, -373, -177, -347, -224, -347, -226, -448, -320, -450, -320, 530, 2681, 527, 2673, -1451, 1172, -1453)
+polygon = PackedVector2Array(1176, -1323, 1273, -1321, 1275, -1270, 1257, -1268, 1259, -1236, 1240, -1235, 1241, -1169, 1225, -1167, 1224, -1152, 1225, -1135, 2350, -1135, 2363, 210, -3, 212, 1, -381, -52, -377, -75, -379, -143, -386, -140, -366, -177, -373, -177, -347, -224, -347, -226, -448, -320, -450, -320, 530, 2681, 527, 2673, -1451, 1172, -1453)
 
 [node name="StaticBody2D room 5" type="StaticBody2D" parent="."]
 position = Vector2(-2606.77, 3460.21)

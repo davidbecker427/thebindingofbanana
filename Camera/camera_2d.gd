@@ -1,6 +1,8 @@
 extends Camera2D
 
+# export for setting starting camera
 @export var is_starting_camera: bool = false
+
 
 func _ready():
 	# Always connect to room_entered so this camera can react if needed
