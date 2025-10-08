@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://ct7n7f7jtkd2r"]
+
+[ext_resource type="Script" uid="uid://dlm05wp27nm3e" path="res://Enemies/enemy_rat_king.gd" id="1_hmju4"]
+[ext_resource type="Texture2D" uid="uid://6arldlvoxk0b" path="res://texturs/EnemyRatKingflipper.png" id="2_hmju4"]
+[ext_resource type="PackedScene" uid="uid://d2luuin6sa3c4" path="res://healthbar/healthbar.tscn" id="3_cnpte"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cnpte"]
+radius = 59.7746
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnpte"]
+radius = 892.0
+height = 1784.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r5klr"]
+radius = 89.0
+height = 252.0
+
+[node name="EnemyRatKing" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_hmju4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.76953, 1.94531)
+texture = ExtResource("2_hmju4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_cnpte")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_cnpte")
+
+[node name="Healthbar" parent="." instance=ExtResource("3_cnpte")]
+offset_left = -120.0
+offset_top = -220.0
+offset_right = 120.0
+offset_bottom = -153.0
+
+[node name="hitbox" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 16
+collision_mask = 69
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-9, 1)
+shape = SubResource("CapsuleShape2D_r5klr")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxudpi4h4jbev"]
+
+[ext_resource type="Script" uid="uid://brkw4ne5x8je8" path="res://startscherm.gd" id="1_sidh8"]
+[ext_resource type="Texture2D" uid="uid://cb5vv2yb7k16d" path="res://texturs/Tbob heart full.png" id="2_2p58f"]
+
+[node name="InGameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sidh8")
+
+[node name="InGameUI" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InGameUI"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="HBoxContainer" parent="InGameUI/MarginContainer"]
+layout_mode = 2
+
+[node name="Heart1" type="NinePatchRect" parent="InGameUI/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(55, 50)
+layout_mode = 2
+texture = ExtResource("2_2p58f")
+
+[node name="Heart2" type="NinePatchRect" parent="InGameUI/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(55, 50)
+layout_mode = 2
+texture = ExtResource("2_2p58f")
+
+[node name="Heart3" type="NinePatchRect" parent="InGameUI/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(55, 50)
+layout_mode = 2
+texture = ExtResource("2_2p58f")
